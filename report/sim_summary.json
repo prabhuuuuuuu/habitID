@@ -1,0 +1,74 @@
+{
+  "n_sessions": 2000,
+  "n_genuine": 1000,
+  "n_fraud": 1000,
+  "confusion": {
+    "tp": 871,
+    "fp": 0,
+    "tn": 1000,
+    "fn": 129
+  },
+  "accuracy": 0.9355,
+  "precision": 1,
+  "recall": 0.871,
+  "f1": 0.9311,
+  "roc_auc": 0.999,
+  "mean_score_genuine": 88.2,
+  "mean_score_fraud": 51.2,
+  "mean_processing_ms": 0.003,
+  "by_archetype": {
+    "Genuine user": {
+      "n": 1000,
+      "meanScore": 88.2,
+      "verified": 1000,
+      "review": 0,
+      "suspicious": 0
+    },
+    "Scripted bot": {
+      "n": 250,
+      "meanScore": 34.4,
+      "verified": 0,
+      "review": 21,
+      "suspicious": 229
+    },
+    "SIM-swap mule": {
+      "n": 250,
+      "meanScore": 63.8,
+      "verified": 107,
+      "review": 143,
+      "suspicious": 0
+    },
+    "OTP farm": {
+      "n": 250,
+      "meanScore": 46.1,
+      "verified": 0,
+      "review": 106,
+      "suspicious": 144
+    },
+    "Fake identity": {
+      "n": 250,
+      "meanScore": 60.3,
+      "verified": 22,
+      "review": 228,
+      "suspicious": 0
+    }
+  },
+  "signal_means": {
+    "genuine": {
+      "typing": 25,
+      "motion": 15.2,
+      "aadhaar": 20,
+      "otp": 9.9,
+      "sim": 8.1,
+      "phone": 10
+    },
+    "fraud": {
+      "typing": 14.9,
+      "motion": 14.3,
+      "aadhaar": 4.8,
+      "otp": 5.4,
+      "sim": 3,
+      "phone": 8.8
+    }
+  }
+}
