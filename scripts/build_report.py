@@ -34,7 +34,7 @@ ax1.axvline(45, color="k", ls=":", lw=0.8)
 ax1.set_ylim(0, ax1.get_ylim()[1] * 1.12)
 ax1.text(70.5, ax1.get_ylim()[1] * 0.95, "VERIFIED ≥70", fontsize=5.5, va="top")
 ax1.text(45.5, ax1.get_ylim()[1] * 0.95, "REVIEW ≥45", fontsize=5.5, va="top")
-ax1.set_xlabel("Trust score (0–100)", fontsize=7)
+ax1.set_xlabel("HabitID score (0–100)", fontsize=7)
 ax1.set_ylabel("Sessions", fontsize=7)
 ax1.set_title("Score distribution by class", fontsize=8)
 ax1.tick_params(labelsize=6)
@@ -142,7 +142,7 @@ def table(data, col_widths, header=True, font=8):
 t = doc.add_paragraph()
 t.alignment = WD_ALIGN_PARAGRAPH.CENTER
 t.paragraph_format.space_after = Pt(0)
-r = t.add_run("TrustScore AI — Passive Behavioural Trust Scoring for Indian Digital KYC")
+r = t.add_run("habitID — Passive Behavioural Identity Scoring for Indian Digital KYC")
 r.bold = True
 r.font.size = Pt(14)
 r.font.color.rgb = ACCENT
@@ -271,6 +271,6 @@ para([("Real Verhoeff validation + explainability by design: ", True),
       ("true UIDAI check-digit maths rather than a length check, and a transparent additive score where every point "
        "is attributable to a named signal with a plain-language reason — no black-box model, no SHAP needed.", False)], bullet=True)
 
-out = REP / "TrustScore_AI_Report.docx"
+out = REP / "habitID_Report.docx"
 doc.save(out)
 print("saved", out)
