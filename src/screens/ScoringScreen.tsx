@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
-import { computeTrustScore } from '../services/scoringEngine';
-import type { SignalScore } from '../models/TrustScoreResult';
+import { computeHabitID } from '../services/scoringEngine';
+import type { SignalScore } from '../models/HabitIDResult';
 
 // Each signal takes ~400ms to "compute" for dramatic effect
 const SIGNAL_REVEAL_INTERVAL = 480;
@@ -15,7 +15,7 @@ const PROCESSING_LABELS = [
   'Querying MSISDN age tables...',
   'Validating phone format...',
   'Cross-checking behavioral consistency...',
-  'Computing trust vector...',
+  'Computing habitID score...',
 ];
 
 export function ScoringScreen() {
@@ -29,12 +29,12 @@ export function ScoringScreen() {
   const [signalScores, setSignalScores] = useState<SignalScore[]>([]);
   const [progress, setProgress] = useState(0);
 
-  const resultRef = useRef<ReturnType<typeof computeTrustScore> | null>(null);
+  const resultRef = useRef<ReturnType<typeof computeHabitID> | null>(null);
   const _labelIndexRef = useRef(0); void _labelIndexRef;
 
   useEffect(() => {
     // Compute score synchronously (it's fast, < 5ms)
-    const result = computeTrustScore(signals);
+    const result = computeHabitID(signals);
     resultRef.current = result;
     setScoreResult(result);
 
@@ -81,9 +81,9 @@ export function ScoringScreen() {
       <div className="flex items-center justify-between px-6 py-5">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-white/10 rounded-xl flex items-center justify-center">
-            <span className="text-white text-xs font-black">TS</span>
+            <span className="text-white text-xs font-black">HI</span>
           </div>
-          <span className="text-xs font-bold text-white/40 tracking-wider">TRUSTSCORE AI</span>
+          <span className="text-xs font-bold text-white/40 tracking-wider">habitID</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse-dot" />
@@ -103,7 +103,7 @@ export function ScoringScreen() {
           >
             {runningTotal}
           </div>
-          <div className="text-white/40 text-xs font-bold tracking-widest">/ 100 TRUST SCORE</div>
+          <div className="text-white/40 text-xs font-bold tracking-widest">/ 100 HABITID SCORE</div>
         </div>
 
         {/* Progress bar */}

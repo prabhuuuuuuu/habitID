@@ -1,4 +1,4 @@
-import type { SignalScore } from '../models/TrustScoreResult';
+import type { SignalScore } from '../models/HabitIDResult';
 
 interface SignalCardProps {
   signal: SignalScore;

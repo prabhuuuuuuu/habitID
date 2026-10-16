@@ -8,7 +8,7 @@ export interface SignalScore {
   risk: 'low' | 'medium' | 'high';
 }
 
-export interface TrustScoreResult {
+export interface HabitIDResult {
   totalScore: number;        // 0–100
   verdict: 'VERIFIED' | 'REVIEW' | 'SUSPICIOUS';
   signals: SignalScore[];

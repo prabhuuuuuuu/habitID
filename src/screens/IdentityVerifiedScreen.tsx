@@ -71,9 +71,9 @@ export function IdentityVerifiedScreen() {
       <div className="flex items-center justify-between px-6 py-5">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-[#08172c] rounded-xl flex items-center justify-center">
-            <span className="text-white text-xs font-black">TS</span>
+            <span className="text-white text-xs font-black">HI</span>
           </div>
-          <span className="text-xs font-bold text-gray-400 tracking-wider">TRUSTSCORE AI</span>
+          <span className="text-xs font-bold text-gray-400 tracking-wider">habitID</span>
         </div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2">
           <rect x="3" y="11" width="18" height="11" rx="2" />
@@ -184,7 +184,7 @@ export function IdentityVerifiedScreen() {
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
             <span className="text-[10px] font-bold text-gray-400 tracking-widest">
-              POWERED BY TRUSTSCORE AI
+              POWERED BY habitID
             </span>
           </div>
         </div>

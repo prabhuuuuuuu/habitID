@@ -8,9 +8,9 @@ export function Header({ rightElement, showLock = true }: HeaderProps) {
     <div className="flex items-center justify-between px-6 py-4">
       <div className="flex items-center gap-2">
         <div className="w-8 h-8 bg-[#08172c] rounded-xl flex items-center justify-center">
-          <span className="text-white text-xs font-black">TS</span>
+          <span className="text-white text-xs font-black">HI</span>
         </div>
-        <span className="text-xs font-bold text-gray-400 tracking-wider">TRUSTSCORE AI</span>
+        <span className="text-xs font-bold text-gray-400 tracking-wider">habitID</span>
       </div>
       <div className="flex items-center gap-2">
         {rightElement}

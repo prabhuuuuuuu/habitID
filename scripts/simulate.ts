@@ -1,8 +1,8 @@
 /**
- * Synthetic evaluation harness for the TrustScore engine.
+ * Synthetic evaluation harness for the habitID engine.
  *
  * Generates labelled synthetic KYC sessions (genuine humans vs. several fraud
- * archetypes), feeds each one through the REAL `computeTrustScore()` from
+ * archetypes), feeds each one through the REAL `computeHabitID()` from
  * src/services/scoringEngine.ts, and writes:
  *   report/sim_results.csv    — one row per session (label, archetype, scores)
  *   report/sim_summary.json   — aggregate metrics
@@ -11,7 +11,7 @@
  */
 
 import { writeFileSync, mkdirSync } from 'node:fs';
-import { computeTrustScore } from '../src/services/scoringEngine';
+import { computeHabitID } from '../src/services/scoringEngine';
 import type {
   BehavioralSignals,
   KeystrokeEvent,
@@ -218,7 +218,7 @@ interface Row {
 }
 
 const rows: Row[] = sessions.map((sess) => {
-  const r = computeTrustScore(sess.signals);
+  const r = computeHabitID(sess.signals);
   const g = (label: string) => r.signals.find((x) => x.label === label)!.score;
   return {
     label: sess.label,

@@ -1,7 +1,7 @@
 /**
  * ScoringEngine
  *
- * Computes a 0–100 trust score from collected behavioral signals.
+ * Computes a 0–100 habitID score from collected behavioral signals.
  *
  * Signal weights:
  *   Typing rhythm entropy     25 pts  — is the inter-key timing human-like?
@@ -18,7 +18,7 @@
  */
 
 import type { BehavioralSignals } from '../models/BehavioralSignal';
-import type { TrustScoreResult, SignalScore } from '../models/TrustScoreResult';
+import type { HabitIDResult, SignalScore } from '../models/HabitIDResult';
 import {
   typingRhythmEntropy,
   typingWPM,
@@ -114,7 +114,7 @@ function behavioralConsistency(
   return { score: 9, detail: 'No strong pace correlation available' };
 }
 
-export function computeTrustScore(signals: BehavioralSignals): TrustScoreResult {
+export function computeHabitID(signals: BehavioralSignals): HabitIDResult {
   const start = performance.now();
 
   const signalScores: SignalScore[] = [];
@@ -308,7 +308,7 @@ export function computeTrustScore(signals: BehavioralSignals): TrustScoreResult 
     100,
   );
 
-  const verdict: TrustScoreResult['verdict'] =
+  const verdict: HabitIDResult['verdict'] =
     totalScore >= 70 ? 'VERIFIED' : totalScore >= 45 ? 'REVIEW' : 'SUSPICIOUS';
 
   return {

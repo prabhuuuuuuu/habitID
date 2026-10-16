@@ -2,21 +2,21 @@ import React, { createContext, useContext, useState, useRef } from 'react';
 import { BehavioralCollector } from '../services/behavioralCollector';
 import { emptySignals } from '../models/BehavioralSignal';
 import type { BehavioralSignals } from '../models/BehavioralSignal';
-import type { TrustScoreResult } from '../models/TrustScoreResult';
+import type { HabitIDResult } from '../models/HabitIDResult';
 
 interface AppState {
   signals: BehavioralSignals;
-  scoreResult: TrustScoreResult | null;
+  scoreResult: HabitIDResult | null;
   collector: BehavioralCollector;
   setSignals: (s: Partial<BehavioralSignals>) => void;
-  setScoreResult: (r: TrustScoreResult) => void;
+  setScoreResult: (r: HabitIDResult) => void;
 }
 
 const AppContext = createContext<AppState | null>(null);
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
   const [signals, setSignalsState] = useState<BehavioralSignals>(emptySignals());
-  const [scoreResult, setScoreResult] = useState<TrustScoreResult | null>(null);
+  const [scoreResult, setScoreResult] = useState<HabitIDResult | null>(null);
   const collectorRef = useRef(new BehavioralCollector());
 
   const setSignals = (partial: Partial<BehavioralSignals>) => {

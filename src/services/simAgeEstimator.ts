@@ -7,7 +7,7 @@
  * India's numbering plan assigns blocks to operators and circles.
  * Older blocks (allocated ~2005–2012) tend to correlate with
  * long-standing subscribers. This is a heuristic signal only —
- * used as one factor in the trust score.
+ * used as one factor in the habitID score.
  *
  * Scoring:
  *   'vintage'  (pre-2010 blocks) → age score 10/10
