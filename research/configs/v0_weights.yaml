@@ -1,0 +1,18 @@
+# habitID-v0 baseline: hand-weighted additive score S0 = sum_i w_i * s_i, s_i in [0, 1].
+# Thresholds reproduce the prototype's verdict rule. Every mapping threshold is listed here.
+# Offline evaluation has no SIM or phone metadata, so the aadhaar, phone and SIM terms are
+# constants (see sim_age_neutral and the notes in research/DEVIATIONS.md, D18).
+
+weights: {typing: 25, motion: 20, aadhaar: 20, otp: 15, sim_age: 10, phone_format: 10}
+verdict: {verified_min: 70, review_min: 45}
+
+typing:                       # s_typing = 0.5 * s_cv + 0.5 * s_wpm
+  cv_ramp: [0.05, 0.2, 1.0, 2.0]        # 0 at cv<=0.05, 1 on [0.2, 1.0], 0 at cv>=2.0 (linear in between)
+  wpm_plausible: [20.0, 150.0]          # 1 inside, 0 outside; wpm = 120 / sum(DD) for a 10-key, 2-word text
+motion:                       # velocity-CV proxy: CV of |userAcceleration| over the window
+  cv_ramp: [0.02, 0.2, 1.0, 3.0]
+otp:
+  ramp_s: [2.0, 5.0, 30.0, 60.0]        # 0 below 2 s, 1 on [5, 30] s, 0 above 60 s (linear in between)
+aadhaar_valid_score: 1.0
+phone_format_score: 1.0
+sim_age_neutral: 0.5

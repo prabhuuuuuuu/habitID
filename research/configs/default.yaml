@@ -1,0 +1,92 @@
+# Global configuration for the habitID-Net pipeline (speed mode, CPU only).
+# Every tunable value used by the code lives here or in the two other YAML files.
+
+project:
+  train_seeds: [0, 1, 2]          # main comparison: 5 folds x 3 seeds
+  seed_ablation: [0]              # ablations, lambda sweep, LOFO-noadv: seed 0 only (speed mode)
+  n_folds: 5
+  fold_seed: 42                   # subject-fold assignment (fixed across all runs)
+  cal_frac: 0.2                   # calibration share of the non-test subjects
+
+typing:
+  n_keys: 10                      # common 10-key representation (CMU Return key dropped to match KeyRecs-fixed)
+  bounds_s:                       # validity bounds (proposed at Gate A, accepted)
+    hold: [0.01, 1.0]
+    dd: [0.01, 2.0]
+    flight: [-0.5, 2.0]
+  corrupt_abs_s: 60.0             # rows with any |timing| above this are corrupt and dropped
+  flight_asinh_scale: 0.05        # flight channel = asinh(flight / 0.05)
+
+motion:
+  fs_hz: 50                       # documented MotionSense rate (not verifiable from the file; Gate A decision)
+  window_s: 3.0
+  activities: [sit, std]          # primary "phone held still" proxy; walking dropped (speed mode)
+  channels: [userAcceleration.x, userAcceleration.y, userAcceleration.z,
+             rotationRate.x, rotationRate.y, rotationRate.z]
+  quantile_bounds: [0.005, 0.995] # PGD feasibility bounds from training humans
+
+gate:
+  invalid_rate: 0.02              # share of synthetic Aadhaar-style numbers with a wrong Verhoeff digit (both classes)
+
+sizes:                            # sessions per fold (speed mode)
+  train_h: 8000
+  cal_h: 2000
+  test_h: 4000
+  bot_per_human: 1.0              # 1:1 class balance; PR-AUC at 1% / 0.1% base rates is reweighted, not resampled
+
+bot_mix:                          # session-level joint attacker policy
+  full: 0.4                       # typing + motion + OTP automated (joint family letter)
+  typing_only: 0.2                # typing automated; motion and OTP human
+  motion_only: 0.2                # motion automated; typing and OTP human
+  otp_only: 0.2                   # OTP automated; typing and motion human (family O)
+
+generators:
+  naive_hold_range: [0.08, 0.12]
+  naive_dd_range: [0.12, 0.25]
+  naive_jitter_s: 0.004
+  replay_logsd: 0.10              # multiplicative noise on each hold/DD
+  replay_warp_logsd: 0.05         # session-level time warp
+  replay_add_s: 0.003             # additive jitter (s)
+  ar_hidden: 64
+  ar_epochs: 6
+  ar_lr: 0.003
+  ar_batch: 256
+  motion_ctx: 16
+  motion_ar_steps: 1500           # minibatch steps (random window, time index pairs)
+  motion_ar_batch: 512
+  motion_ar_lr: 0.002
+  motion_replay_noise_frac: 0.05  # M-C noise as fraction of per-channel std
+  motion_zero_sd: 0.0001          # M-A emulator-like residual noise (raw units)
+
+model:
+  lstm_hidden: 32
+  lstm_layers: 2
+  cnn_channels: [32, 64, 64, 64]
+  alpha0_raw: {typing: 25, motion: 20, otp: 15}   # normalized to alpha0 = raw / 60
+
+training:                        # chosen by fold-0 pilot runs (DEVIATIONS D17)
+  epochs: 24                      # cap; 12-epoch pilot runs often hit the cap (results/pilot_cap12)
+  batch_size: 512
+  lr: 0.005
+  patience: 5
+  lambda_prior: 0.1               # habitID-Net default
+  lambda_adv: 0.2                 # lambda_adv = 1.0 collapsed to AUC 0.74 in the pilot (DEVIATIONS D17)
+  pgd_eps: 0.1                    # typing (z units)
+  pgd_eps_motion: 0.02            # motion (z units); DEVIATIONS D16
+  pgd_eps_otp: 0.05               # log-latency units
+  pgd_steps: 3
+  pgd_step: 0.05
+  refresh_every: 2                # generator-D refresh period (epochs)
+  best_of_n: 8                    # refresh = best-of-N selection of D samples against the current detector
+
+evaluation:
+  conformal_eps: [0.01, 0.05, 0.1, 0.2]
+  base_rates: [0.01, 0.001]
+  fpr_target: 0.01
+  ece_bins: 15
+  bootstrap_resamples: 2000
+  bootstrap_seed: 123
+  lambda_sweep: [0.0, 0.1, 10.0]
+  otp_grid_human_mult: [0.8, 1.0, 1.25]
+  otp_grid_bot_near_weight: [0.5, 0.7, 0.9]
+  dstar_candidates: 8

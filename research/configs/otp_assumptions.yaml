@@ -1,0 +1,19 @@
+# ASSUMED OTP-latency parameters. No public OTP-latency data exist.
+# Latency t is in seconds. Densities are Gaussian mixtures over log(t).
+# median_s is exp(mu) of each log-normal component; sigma_log is its std in log space.
+# Section 6 of the paper reports sensitivity to these values (configs in `sensitivity`).
+
+human:
+  components:
+    - {weight: 0.7, median_s: 7.0,  sigma_log: 0.45}   # typical typed entry
+    - {weight: 0.3, median_s: 16.0, sigma_log: 0.50}   # slower / hesitant entry
+automated:
+  components:
+    - {weight: 0.7, median_s: 0.3,  sigma_log: 0.60}   # near-zero component (scripted instant entry)
+    - {weight: 0.3, median_s: 5.0,  sigma_log: 1.20}   # broad component
+clip_s: [0.02, 300.0]         # latencies outside this range are clipped before scoring
+llr_clip: 12.0                # |log-likelihood ratio| is clipped to this value
+
+sensitivity:                  # 3 x 3 grid used in scripts/06_transfer_otp.py (true world; detector keeps nominal)
+  human_median_mult: [0.8, 1.0, 1.25]     # multiplies both human component medians
+  bot_near_weight: [0.5, 0.7, 0.9]        # weight of the near-zero automated component
