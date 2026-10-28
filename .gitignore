@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# research pipeline (raw data is read-only and never committed; generated data/results are regenerable)
+raw dataset/
+research/data/
+research/results/
+
+
+# python caches
+__pycache__/
+.pytest_cache/
+*.pyc
