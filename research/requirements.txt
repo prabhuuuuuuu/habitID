@@ -1,0 +1,12 @@
+# Pinned to the versions used for all reported results (Windows 11, Python 3.13, CPU only).
+numpy==2.4.4
+pandas==3.0.2
+scipy==1.17.1
+scikit-learn==1.8.0
+PyYAML==6.0.3
+matplotlib==3.10.8
+torch==2.11.0
+pytest==8.2.0
+onnx==1.23.2
+onnxscript==0.7.2
+onnxruntime==1.31.0
