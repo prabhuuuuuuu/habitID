@@ -1,0 +1,33 @@
+\begin{table}[t]
+\caption{In-distribution conformal coverage and abstention (habitID-Net, 3 seeds $\times$ 5 folds).}
+\label{tab:conf}
+\centering
+\small
+\begin{tabular}{lccccccccc}
+\toprule
+$\epsilon$ & cov.\ human & cov.\ bot & abst. & A & B & C & D & O \\
+\midrule
+0.01 & 0.982 & 0.991 & 0.650 & 0.995 & 0.992 & 0.980 & 0.992 & 0.994 \\
+0.05 & 0.932 & 0.954 & 0.526 & 0.983 & 0.970 & 0.894 & 0.951 & 0.973 \\
+0.1 & 0.871 & 0.906 & 0.383 & 0.945 & 0.931 & 0.803 & 0.903 & 0.947 \\
+0.2 & 0.751 & 0.807 & 0.109 & 0.842 & 0.842 & 0.633 & 0.825 & 0.892 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\caption{Conformal coverage under attacker shift: thresholds calibrated without the held-out family.}
+\label{tab:conflofo}
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+Held-out family & cov.\ held-out bots ($\epsilon{=}0.1$) & cov.\ human & abst. \\
+\midrule
+A & 0.764 & 0.847 & 0.378 \\
+B & 0.838 & 0.855 & 0.381 \\
+C & 0.710 & 0.881 & 0.265 \\
+D & 0.742 & 0.899 & 0.326 \\
+\bottomrule
+\end{tabular}
+\end{table}

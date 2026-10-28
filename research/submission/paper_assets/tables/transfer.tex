@@ -1,0 +1,19 @@
+\begin{table}[t]
+\caption{Cross-dataset typing transfer diagnostics (typing-only detector, seed 0 only).}
+\label{tab:transfer}
+\centering
+\small
+\begin{tabular}{llccccc}
+\toprule
+direction & setting & in-domain AUC (control) & cross-dataset AUC & cross TPR@1\%FPR & median logit, target humans & median logit, attackers \\
+\midrule
+CMU $\to$ KeyRecs & flight on, source stats & 0.775 & 0.252 & 0.004 & -7.42 & -0.75 \\
+KeyRecs $\to$ CMU & flight on, source stats & 0.807 & 0.456 & 0.168 & -0.47 & -0.21 \\
+CMU $\to$ KeyRecs & flight off & 0.759 & 0.257 & 0.001 & -5.73 & -0.70 \\
+CMU $\to$ KeyRecs & per-dataset stats & 0.775 & 0.289 & 0.001 & 0.08 & 0.62 \\
+KeyRecs $\to$ CMU & flight off & 0.773 & 0.441 & 0.188 & -0.89 & -0.53 \\
+KeyRecs $\to$ CMU & per-dataset stats & 0.807 & 0.642 & 0.091 & 0.30 & -0.07 \\
+\bottomrule
+\end{tabular}
+\\[2pt]\footnotesize Positive class = human; higher logit = more human. Attackers are fitted on the source training split. Per-dataset stats are computed from unlabelled target sessions.
+\end{table}

@@ -1,0 +1,32 @@
+\begin{table}[t]
+\caption{Typing sessions after validity filtering (10-key canonical representation).}
+\label{tab:counts}
+\centering
+\small
+\begin{tabular}{lccccc}
+\toprule
+dataset & sessions (raw) & corrupt dropped & out-of-bounds dropped & kept & subjects \\
+\midrule
+CMU & 20,400 & 0 & 302 & 20,098 & 51 \\
+KeyRecs-fixed & 19,772 & 5 & 1,038 & 18,729 & 99 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\caption{Per-fold session counts (humans / automated).}
+\label{tab:folds}
+\centering
+\small
+\begin{tabular}{lccccc}
+\toprule
+fold & train h/b & cal h/b & test h/b & test typing subjects & test motion subjects \\
+\midrule
+0 & 8000/8000 & 2000/2000 & 4000/4000 & 31 & 5 \\
+1 & 8000/8000 & 2000/2000 & 4000/4000 & 30 & 5 \\
+2 & 8000/8000 & 2000/2000 & 4000/4000 & 30 & 5 \\
+3 & 8000/8000 & 2000/2000 & 4000/4000 & 30 & 5 \\
+4 & 8000/8000 & 2000/2000 & 4000/4000 & 29 & 4 \\
+\bottomrule
+\end{tabular}
+\end{table}

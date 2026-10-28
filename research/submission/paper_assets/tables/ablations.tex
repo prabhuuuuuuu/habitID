@@ -1,0 +1,27 @@
+\begin{table}[t]
+\caption{Ablations. In-distribution rows: minimum per-letter AUC of the seed-0 model. LOFO rows: true held-out worst case.}
+\label{tab:abl}
+\centering
+\small
+\begin{tabular}{lc}
+\toprule
+Variant & Worst-case AUC (family) \\
+\midrule
+full (seed 0) & 0.692 (C) \\
+no prior (lambda=0) & 0.696 (C) \\
+lambda=10 & 0.701 (C) \\
+no adversarial training & 0.703 (C) \\
+no typing encoder & 0.701 (C) \\
+no motion encoder & 0.689 (C) \\
+no OTP term & 0.479 (C) \\
+typing only & 0.472 (C) \\
+motion only & 0.495 (O) \\
+OTP only & 0.703 (C) \\
+LOFO worst case: habitID-Net & 0.647 (A) \\
+LOFO worst case: no adversarial training & 0.614 (A) \\
+No generator-D augmentation (worst letter, D held out) & 0.698 (C) \\
+Fixed threshold $p\geq0.5$ (no conformal): bot flag rate / human flag rate & 0.694 / 0.061 \\
+\bottomrule
+\end{tabular}
+\\[2pt]\footnotesize Calibration does not change AUC (temperature scaling is monotone); its effect is in ECE (Table~\ref{tab:calib}).
+\end{table}

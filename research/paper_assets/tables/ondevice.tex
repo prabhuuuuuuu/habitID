@@ -1,0 +1,14 @@
+\begin{table}[t]
+\caption{On-device cost on this CPU (onnxruntime, 1 thread, single session, N=1000). Not a mobile measurement.}
+\label{tab:ondevice}
+\centering
+\small
+\begin{tabular}{lccccc}
+\toprule
+Format & size (KB) & median (ms) & p95 (ms) & $\Delta$AUC vs fp32 & decision agreement \\
+\midrule
+fp32 ONNX & 267.6 & 0.283 & 0.497 & -- & -- \\
+int8 dynamic & 236.7 & 0.302 & 0.672 & +0.0009 & 0.9966 \\
+\bottomrule
+\end{tabular}
+\end{table}

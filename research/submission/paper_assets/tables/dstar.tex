@@ -1,0 +1,14 @@
+\begin{table}[t]
+\caption{Adaptive stress test (not part of the main comparison). D* selects, among 8 typing candidates from family D, the one the frozen detector scores most human-like.}
+\label{tab:dstar}
+\centering
+\small
+\begin{tabular}{lcc}
+\toprule
+Model & AUC, humans vs adaptive D* (best-of-8) & D* flagged as human (p$\geq$0.5) \\
+\midrule
+habitID-Net (trained with all families) & 0.982 $\pm$ 0.014 & 0.947 \\
+habitID-Net, family D held out & 0.838 $\pm$ 0.026 & 0.750 \\
+\bottomrule
+\end{tabular}
+\end{table}

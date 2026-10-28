@@ -1,0 +1,26 @@
+\begin{table}[t]
+\caption{Held-out detection performance (5 folds $\times$ seeds; mean $\pm$ std over fold-seed runs).}
+\label{tab:main}
+\centering
+\small
+\begin{tabular}{lcccccc}
+\toprule
+Method & AUC & EER & TPR@1\%FPR & PR-AUC (1\%) & PR-AUC (0.1\%) & ECE \\
+\midrule
+habitID-v0 (additive score) & 0.756 $\pm$ 0.009 & 0.314 $\pm$ 0.007 & 0.185 $\pm$ 0.026 & 0.122 $\pm$ 0.028 & 0.019 $\pm$ 0.007 & -- \\
+Validity gate only & 0.500 $\pm$ 0.000 & 0.500 $\pm$ 0.000 & 0.000 $\pm$ 0.000 & 0.010 $\pm$ 0.000 & 0.001 $\pm$ 0.000 & -- \\
+Logistic regression (hand-crafted) & 0.786 $\pm$ 0.014 & 0.295 $\pm$ 0.014 & 0.450 $\pm$ 0.084 & 0.226 $\pm$ 0.103 & 0.047 $\pm$ 0.038 & 0.075 $\pm$ 0.006 \\
+GBDT (hand-crafted) & 0.891 $\pm$ 0.007 & 0.186 $\pm$ 0.007 & 0.724 $\pm$ 0.009 & 0.725 $\pm$ 0.013 & 0.678 $\pm$ 0.037 & 0.023 $\pm$ 0.009 \\
+Isolation Forest (typing) & 0.477 $\pm$ 0.027 & 0.504 $\pm$ 0.020 & 0.007 $\pm$ 0.003 & 0.010 $\pm$ 0.001 & 0.001 $\pm$ 0.000 & -- \\
+One-class SVM (typing) & 0.472 $\pm$ 0.023 & 0.505 $\pm$ 0.019 & 0.009 $\pm$ 0.003 & 0.010 $\pm$ 0.001 & 0.001 $\pm$ 0.000 & -- \\
+Scaled Manhattan (typing) & 0.478 $\pm$ 0.034 & 0.504 $\pm$ 0.025 & 0.007 $\pm$ 0.003 & 0.010 $\pm$ 0.001 & 0.001 $\pm$ 0.000 & -- \\
+Neural, no prior ($\lambda{=}0$) & 0.836 $\pm$ 0.035 & 0.247 $\pm$ 0.036 & 0.635 $\pm$ 0.068 & 0.634 $\pm$ 0.065 & 0.586 $\pm$ 0.076 & 0.040 $\pm$ 0.015 \\
+Neural, no adversarial training & 0.872 $\pm$ 0.015 & 0.208 $\pm$ 0.019 & 0.667 $\pm$ 0.031 & 0.670 $\pm$ 0.027 & 0.623 $\pm$ 0.024 & 0.039 $\pm$ 0.028 \\
+Typing head only & 0.532 $\pm$ 0.043 & 0.473 $\pm$ 0.040 & 0.013 $\pm$ 0.007 & 0.012 $\pm$ 0.002 & 0.002 $\pm$ 0.001 & 0.042 $\pm$ 0.032 \\
+Motion head only & 0.717 $\pm$ 0.009 & 0.355 $\pm$ 0.009 & 0.362 $\pm$ 0.114 & 0.351 $\pm$ 0.111 & 0.302 $\pm$ 0.120 & 0.047 $\pm$ 0.025 \\
+OTP term only & 0.751 $\pm$ 0.005 & 0.330 $\pm$ 0.006 & 0.476 $\pm$ 0.007 & 0.484 $\pm$ 0.006 & 0.458 $\pm$ 0.006 & 0.016 $\pm$ 0.003 \\
+\textbf{habitID-Net} & 0.833 $\pm$ 0.035 & 0.250 $\pm$ 0.034 & 0.631 $\pm$ 0.067 & 0.632 $\pm$ 0.066 & 0.590 $\pm$ 0.078 & 0.041 $\pm$ 0.016 \\
+\bottomrule
+\end{tabular}
+\\[2pt]\footnotesize Validity-gate failures are rejected before scoring for every method. PR-AUC is reweighted to the stated base rate. ECE uses temperature-scaled probabilities; n/a methods do not output probabilities.
+\end{table}

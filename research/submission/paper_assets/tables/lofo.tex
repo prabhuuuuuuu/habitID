@@ -1,0 +1,14 @@
+\begin{table}[t]
+\caption{Leave-one-attacker-family-out: AUC / TPR@1\%FPR on the held-out family (seed 0, pooled folds).}
+\label{tab:lofo}
+\centering
+\small
+\begin{tabular}{lcccccc}
+\toprule
+Model (family held out) & A & B & C & D & Worst family \\
+\midrule
+habitID-Net & 0.647 / 0.365 & 0.710 / 0.379 & 0.702 / 0.370 & 0.704 / 0.391 & 0.647 / 0.365 (A) \\
+No adversarial training & 0.614 / 0.362 & 0.718 / 0.388 & 0.687 / 0.364 & 0.703 / 0.388 & 0.614 / 0.362 (A) \\
+\bottomrule
+\end{tabular}
+\end{table}

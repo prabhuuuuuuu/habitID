@@ -1,0 +1,28 @@
+\begin{table}[t]
+\caption{Flight-time CV reliability as a function of the number of keys. Family A is naive (fixed intervals); family B is fitted to human marginals, so its near-0.5 AUC is partly by construction.}
+\label{tab:cv}
+\centering
+\small
+\begin{tabular}{llccccc}
+\toprule
+dataset & keys $n$ & median CV (human) & median boot.\ SE & share CV in [0.2,1] & AUC(CV), human vs A & AUC(CV), human vs B (95\% CI) \\
+\midrule
+CMU & 4 & 0.677 & 0.318 & 0.664 & 0.976 & 0.435 [0.422, 0.448] \\
+CMU & 5 & 0.815 & 0.335 & 0.664 & 0.989 & 0.494 [0.484, 0.508] \\
+CMU & 6 & 0.829 & 0.290 & 0.753 & 0.993 & 0.518 [0.506, 0.531] \\
+CMU & 7 & 0.859 & 0.265 & 0.750 & 0.994 & 0.525 [0.514, 0.538] \\
+CMU & 8 & 0.943 & 0.287 & 0.666 & 0.994 & 0.522 [0.510, 0.534] \\
+CMU & 9 & 1.089 & 0.395 & 0.539 & 0.996 & 0.567 [0.554, 0.579] \\
+CMU & 10 & 1.223 & 0.416 & 0.510 & 0.997 & 0.623 [0.609, 0.636] \\
+CMU & 11 & 1.161 & 0.344 & 0.565 & 0.996 & 0.608 [0.594, 0.620] \\
+KeyRecs-fixed & 4 & 0.705 & 0.317 & 0.665 & 0.981 & 0.498 [0.485, 0.512] \\
+KeyRecs-fixed & 5 & 0.807 & 0.283 & 0.635 & 0.987 & 0.449 [0.435, 0.461] \\
+KeyRecs-fixed & 6 & 0.834 & 0.271 & 0.627 & 0.990 & 0.430 [0.418, 0.443] \\
+KeyRecs-fixed & 7 & 0.908 & 0.290 & 0.579 & 0.994 & 0.460 [0.449, 0.473] \\
+KeyRecs-fixed & 8 & 0.934 & 0.282 & 0.553 & 0.993 & 0.461 [0.448, 0.473] \\
+KeyRecs-fixed & 9 & 0.939 & 0.263 & 0.563 & 0.993 & 0.463 [0.452, 0.478] \\
+KeyRecs-fixed & 10 & 0.946 & 0.252 & 0.552 & 0.994 & 0.474 [0.462, 0.487] \\
+\bottomrule
+\end{tabular}
+\\[2pt]\footnotesize AUC direction fixed a priori (higher CV = human). Values below 0.5 mean the reverse. Descriptive, not a system-level estimate.
+\end{table}

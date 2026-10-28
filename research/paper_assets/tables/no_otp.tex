@@ -1,0 +1,18 @@
+\begin{table}[t]
+\caption{Primary comparison without the assumed OTP term. habitID-Net is seed 0 only (five folds); baselines as listed.}
+\label{tab:noOtp}
+\centering
+\small
+\begin{tabular}{lccccc}
+\toprule
+Method (no OTP term) & AUC & EER & TPR@1\%FPR & ECE & runs \\
+\midrule
+habitID-Net, typing + motion & 0.715 $\pm$ 0.021 & 0.360 $\pm$ 0.021 & 0.388 $\pm$ 0.037 & 0.050 $\pm$ 0.022 & 5 \\
+motion head only & 0.717 $\pm$ 0.009 & 0.355 $\pm$ 0.009 & 0.362 $\pm$ 0.114 & 0.047 $\pm$ 0.025 & 15 \\
+typing head only & 0.532 $\pm$ 0.043 & 0.473 $\pm$ 0.040 & 0.013 $\pm$ 0.007 & 0.042 $\pm$ 0.032 & 15 \\
+logistic regression & 0.685 $\pm$ 0.025 & 0.375 $\pm$ 0.020 & 0.046 $\pm$ 0.065 & 0.102 $\pm$ 0.010 & 5 \\
+GBDT & 0.783 $\pm$ 0.008 & 0.303 $\pm$ 0.007 & 0.495 $\pm$ 0.012 & 0.029 $\pm$ 0.008 & 15 \\
+habitID-v0 without OTP term & 0.537 $\pm$ 0.017 & 0.480 $\pm$ 0.017 & 0.009 $\pm$ 0.002 & -- & 5 \\
+\bottomrule
+\end{tabular}
+\end{table}

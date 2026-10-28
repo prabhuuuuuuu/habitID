@@ -1,0 +1,19 @@
+\begin{table}[t]
+\caption{AUC of humans versus each automated type (mean $\pm$ std over three seeds; OTP-only by construction).}
+\label{tab:perType}
+\centering
+\small
+\begin{tabular}{lcccc}
+\toprule
+Model & fully automated & typing-only bots & motion-only bots & OTP-only bots (by construction) \\
+\midrule
+habitID-Net (with OTP) & 0.969 $\pm$ 0.010 & 0.502 $\pm$ 0.013 & 0.834 $\pm$ 0.054 & 0.904 $\pm$ 0.002 \\
+no prior & 0.970 $\pm$ 0.009 & 0.510 $\pm$ 0.009 & 0.834 $\pm$ 0.057 & 0.907 $\pm$ 0.001 \\
+no adversarial training & 0.973 $\pm$ 0.001 & 0.646 $\pm$ 0.024 & 0.858 $\pm$ 0.004 & 0.899 $\pm$ 0.003 \\
+typing head only & 0.538 $\pm$ 0.016 & 0.546 $\pm$ 0.017 & 0.503 $\pm$ 0.003 & 0.504 $\pm$ 0.005 \\
+motion head only & 0.864 $\pm$ 0.006 & 0.499 $\pm$ 0.003 & 0.862 $\pm$ 0.006 & 0.498 $\pm$ 0.003 \\
+OTP term only & 0.921 $\pm$ 0.000 & 0.499 $\pm$ 0.001 & 0.497 $\pm$ 0.000 & 0.919 $\pm$ 0.000 \\
+\bottomrule
+\end{tabular}
+\\[2pt]\footnotesize Single-signal bots are about 60\% of automated sessions, which caps pooled AUC.
+\end{table}

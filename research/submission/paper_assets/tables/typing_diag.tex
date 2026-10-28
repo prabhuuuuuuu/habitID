@@ -1,0 +1,20 @@
+\begin{table}[t]
+\caption{Typing-only bots: AUC per attacker family (seed 0). Only typing is automated; motion and OTP are human.}
+\label{tab:typing_diag}
+\centering
+\small
+\begin{tabular}{lcccc}
+\toprule
+Model (typing-only bots of one family vs humans) & A & B & C & D \\
+\midrule
+habitID-Net (fused, with OTP) & 0.557 & 0.542 & 0.484 & 0.487 \\
+typing head only & 0.623 & 0.567 & 0.464 & 0.489 \\
+GBDT, typing features only & 1.000 & 0.837 & 0.512 & 0.530 \\
+LR, typing features only & 0.976 & 0.513 & 0.497 & 0.565 \\
+typing evidence $\alpha_{\text{typ}}g_{\text{typ}}$, median: humans / typing-only bots & 1.73 / 1.76 &  &  &  \\
+\emph{Exploratory, post hoc:} habitID-Net with typing summary statistics & 0.998 & 0.781 & 0.508 & 0.517 \\
+\emph{Exploratory:} typing evidence median, humans / typing-only bots & -0.41 / -0.76 &  &  &  \\
+\bottomrule
+\end{tabular}
+\\[2pt]\footnotesize GBDT and LR are fitted per fold on the training split using typing summary features only. The row marked exploratory is a post-hoc variant, not the main model; without-OTP version not trained.
+\end{table}

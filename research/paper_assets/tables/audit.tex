@@ -1,0 +1,15 @@
+\begin{table}[t]
+\caption{Audit: digraph convention check (Appendix~A of the paper, from the Phase 0 audit).}
+\label{tab:audit}
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+Dataset & rows & fraction with standard $\mathrm{UD}=\mathrm{DD}-H(k_1)$ & flight $<0$ (fraction) \\
+\midrule
+CMU DSL-StrongPasswordData & 20400 & 1.0000 & 0.1084 \\
+KeyRecs fixed-text & 19772 & 0.0000 (standard; stored = 0) & 0.0947 (DD$-$H(k1)) \\
+KeyRecs free-text & 562372 & 1.0000 & 0.1741 \\
+\bottomrule
+\end{tabular}
+\end{table}

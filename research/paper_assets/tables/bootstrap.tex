@@ -1,0 +1,18 @@
+\begin{table}[t]
+\caption{Paired cluster-bootstrap AUC differences (seed 0, pooled test folds).}
+\label{tab:boot}
+\centering
+\small
+\begin{tabular}{lcccc}
+\toprule
+Comparison & $\Delta$AUC & 95\% cluster CI & $p$ (raw) & $p$ (Holm) \\
+\midrule
+habitid_net $-$ habitid_v0 & +0.091 & [+0.074, +0.109] & 0.0000 & 0.0000 \\
+habitid_net $-$ noprior & -0.001 & [-0.013, +0.011] & 0.9100 & 0.9100 \\
+habitid_net $-$ noadv & -0.019 & [-0.031, -0.006] & 0.0030 & 0.0060 \\
+habitid_net $-$ gbt_handcrafted & -0.044 & [-0.056, -0.032] & 0.0000 & 0.0000 \\
+habitid_net $-$ lr_handcrafted & +0.061 & [+0.049, +0.074] & 0.0000 & 0.0000 \\
+\bottomrule
+\end{tabular}
+\\[2pt]\footnotesize 2000 subject-cluster resamples; human clusters = typing subjects, bot clusters = generator instances.
+\end{table}

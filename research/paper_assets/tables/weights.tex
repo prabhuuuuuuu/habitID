@@ -1,0 +1,19 @@
+\begin{table}[t]
+\caption{Learned fusion weights (mean over folds and seeds). $\alpha^0 = (0.417, 0.333, 0.250)$.}
+\label{tab:alpha}
+\centering
+\small
+\begin{tabular}{lcccccc}
+\toprule
+Variant & $\lambda_{\text{prior}}$ & $\alpha_{\text{typ}}$ & $\alpha_{\text{mot}}$ & $\alpha_{\text{otp}}$ & $\|\alpha-\alpha^0\|$ & runs \\
+\midrule
+full & 0.1 & 0.343 & 0.310 & 0.395 & 0.165 & 15 \\
+noprior & 0 & 0.321 & 0.306 & 0.476 & 0.247 & 15 \\
+lam10 & 10 & 0.416 & 0.334 & 0.259 & 0.009 & 4 \\
+noadv & 0.1 & 0.349 & 0.315 & 0.410 & 0.176 & 15 \\
+typing only & 0.1 & 0.321 & -- & -- & 0.096 & 15 \\
+motion only & 0.1 & -- & 0.308 & -- & 0.028 & 15 \\
+otp only & 0.1 & -- & -- & 0.348 & 0.098 & 15 \\
+\bottomrule
+\end{tabular}
+\end{table}
